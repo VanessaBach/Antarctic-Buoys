@@ -9,6 +9,8 @@ u = User.new(
   password: "operantar",
   admin: false
 )
+
+
 u.save!
 
 
