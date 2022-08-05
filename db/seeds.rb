@@ -16,25 +16,25 @@ u.save!
 
 s= System.new(
   name: "almirantado_int",
-  buoy_id: 20,
-  lat: "-62.088827", 
-  lon: "-58.415502"
+  buoy_id: 24,
+  lat: "-62.092", 
+  lon: "-58.435483"
 )
 s.save!
 
 s= System.new(
   name: "almirantado_ext",
-  buoy_id: 20,
-  lat: "-62.189956,", 
-  lon: "-58.282637"
+  buoy_id: 25,
+  lat: "-62.291317", 
+  lon: "-58.556767"
 )
 s.save!
 
 s= System.new(
   name: "inpe",
-  buoy_id: 20,
-  lat: "-62.165118", 
-  lon: "-58.158510"
+  buoy_id: 26,
+  lat: "-62.128767", 
+  lon: "-57.949717"
 )
 s.save!
 

@@ -36,11 +36,11 @@ import { initSmooth } from '../components/smooth';
 import { initQuotes } from '../components/quotes';
 
 document.addEventListener('turbolinks:load', () => {
+  initPopup();
   initMapbox();
   initMapboxDrifter();
   initPlotly();
   initSmooth();
   initUpdateNavbarOnScroll();
-  initQuotes();
-  initPopup();
+  initQuotes();  
 })

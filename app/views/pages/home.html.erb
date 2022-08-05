@@ -95,24 +95,21 @@
 						<div class="card-product-infos w-100">
 							<% if system.name.downcase == 'almirantado_int' %>
 								<h3 class='text-center'>KELLER</h3>
-								<% if @almirantado_int_data == {} || @almirantado_int_data[:date_time] == [] %>
-									<p  class='text-center'><strong>BOIA A SER LANÇADA</strong></p>
-								<% else %>
-									<p  class='text-center'><strong>ÚLTIMO DADO:</strong> <%= @almirantado_int_data[:date_time][0].strftime('%Y/%m/%d %H:%M')%></p>
+									<p  class='text-center'><strong>ÚLTIMO DADO:</strong> <%= @almirantado_int_last[:date_time][0].strftime('%Y/%m/%d %H:%M')%></p>
 									<div class="row">
 										<div class="col-6 text-center">
-											<% if @almirantado_int_data[:swvht][0] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_int_data[:swvht][0].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @almirantado_int_data[:tp][0].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_int_data[:wvdir][0].round()%>°</p>
-											<% elsif @almirantado_int_data[:swvht][1] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_int_data[:swvht][1].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @almirantado_int_data[:tp][1].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_int_data[:wvdir][1].round()%>°</p>
-											<% elsif @almirantado_int_data[:swvht][2] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_int_data[:swvht][2].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @almirantado_int_data[:tp][2].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_int_data[:wvdir][2].round()%>°</p>
+											<% if @almirantado_int_last[:swvht][0] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_int_last[:swvht][0].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @almirantado_int_last[:tp][0].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_int_last[:wvdir][0].round()%>°</p>
+											<% elsif @almirantado_int_last[:swvht][1] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_int_last[:swvht][1].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @almirantado_int_last[:tp][1].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_int_last[:wvdir][1].round()%>°</p>
+											<% elsif @almirantado_int_last[:swvht][2] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_int_last[:swvht][2].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @almirantado_int_last[:tp][2].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_int_last[:wvdir][2].round()%>°</p>
 											<% else %>
 												<p><strong>ALT. ONDAS:</strong> -- m</p>
 												<p><strong>PER. ONDAS:</strong> -- s</p>
@@ -120,51 +117,48 @@
 											<% end %>
 										</div>
 										<div class="col-6 text-center"> 								
-											<% if @almirantado_int_data[:sst][0] %>
-												<p><strong>SST:</strong> <%= @almirantado_int_data[:sst][0].round()%> °C</p>
-											<% elsif @almirantado_int_data[:sst][1] %>
-												<p><strong>SST:</strong> <%= @almirantado_int_data[:sst][1].round()%> °C</p>
-											<% elsif @almirantado_int_data[:sst][2] %>
-												<p><strong>SST:</strong> <%= @almirantado_int_data[:sst][2].round()%> °C</p>
+											<% if @almirantado_int_last[:sst][0] %>
+												<p><strong>SST:</strong> <%= @almirantado_int_last[:sst][0].round()%> °C</p>
+											<% elsif @almirantado_int_last[:sst][1] %>
+												<p><strong>SST:</strong> <%= @almirantado_int_last[:sst][1].round()%> °C</p>
+											<% elsif @almirantado_int_last[:sst][2] %>
+												<p><strong>SST:</strong> <%= @almirantado_int_last[:sst][2].round()%> °C</p>
 											<% else %>
 												<p><strong>SST:</strong> -- °C</p>
 											<% end %>
-											<% if @almirantado_int_data[:wspd][0] %>
-												<p><strong>VEL. VENTO:</strong> <%= @almirantado_int_data[:wspd][0].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @almirantado_int_data[:wdir][0].round()%> °</p>
-											<% elsif @almirantado_int_data[:wspd][1] %>
-												<p><strong>VEL. VENTO:</strong> <%= @almirantado_int_data[:wspd][1].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @almirantado_int_data[:wdir][1].round()%> °</p>
-											<% elsif @almirantado_int_data[:wspd][2] %>
-												<p><strong>VEL. VENTO:</strong> <%= @almirantado_int_data[:wspd][2].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @almirantado_int_data[:wdir][2].round()%> °</p>
+											<% if @almirantado_int_last[:wspd][0] %>
+												<p><strong>VEL. VENTO:</strong> <%= @almirantado_int_last[:wspd][0].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @almirantado_int_last[:wdir][0].round()%> °</p>
+											<% elsif @almirantado_int_last[:wspd][1] %>
+												<p><strong>VEL. VENTO:</strong> <%= @almirantado_int_last[:wspd][1].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @almirantado_int_last[:wdir][1].round()%> °</p>
+											<% elsif @almirantado_int_last[:wspd][2] %>
+												<p><strong>VEL. VENTO:</strong> <%= @almirantado_int_last[:wspd][2].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @almirantado_int_last[:wdir][2].round()%> °</p>
 											<% else %>
 												<p><strong>VEL. VENTO:</strong> -- m/s</p>
 												<p><strong>DIR. VENTO:</strong> -- °</p>
 											<% end %>
 										</div>
 									</div>
-								<% end %>
+								
 							<% elsif system.name.downcase == 'almirantado_ext' %>
 								<h3 class='text-center'>POTTER</h3>
-								<% if @almirantado_ext_data == {}  || @almirantado_ext_data[:date_time] == [] %>
-									<p  class='text-center'><strong>BOIA A SER LANÇADA</strong></p>
-								<% else %>
-									<p  class='text-center'><strong>ÚLTIMO DADO:</strong> <%= @almirantado_ext_data[:date_time][0].strftime('%Y/%m/%d %H:%M')%></p>
+								<p  class='text-center'><strong>ÚLTIMO DADO:</strong> <%= @almirantado_ext_last[:date_time][0].strftime('%Y/%m/%d %H:%M')%></p>
 									<div class="row">
 										<div class="col-6 text-center"> 
-											<% if @almirantado_ext_data[:swvht][0] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_ext_data[:swvht][0].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @almirantado_ext_data[:tp][0].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_ext_data[:wvdir][0].round()%>°</p>
-											<% elsif @almirantado_ext_data[:swvht][1] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_ext_data[:swvht][1].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @almirantado_ext_data[:tp][1].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_ext_data[:wvdir][1].round()%>°</p>
-											<% elsif @almirantado_ext_data[:swvht][2] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_ext_data[:swvht][2].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @almirantado_ext_data[:tp][2].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_ext_data[:wvdir][2].round()%>°</p>
+											<% if @almirantado_ext_last[:swvht][0] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_ext_last[:swvht][0].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @almirantado_ext_last[:tp][0].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_ext_last[:wvdir][0].round()%>°</p>
+											<% elsif @almirantado_ext_last[:swvht][1] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_ext_last[:swvht][1].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @almirantado_ext_last[:tp][1].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_ext_last[:wvdir][1].round()%>°</p>
+											<% elsif @almirantado_ext_last[:swvht][2] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @almirantado_ext_last[:swvht][2].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @almirantado_ext_last[:tp][2].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @almirantado_ext_last[:wvdir][2].round()%>°</p>
 											<% else %>
 												<p><strong>ALT. ONDAS:</strong> -- m</p>
 												<p><strong>PER. ONDAS:</strong> -- s</p>
@@ -172,51 +166,48 @@
 											<% end %>
 										</div>
 										<div class="col-6 text-center"> 
-											<% if @almirantado_ext_data[:sst][0] %>
-												<p><strong>SST:</strong> <%= @almirantado_ext_data[:sst][0].round()%> °C</p>
-											<% elsif @almirantado_ext_data[:sst][1] %>
-												<p><strong>SST:</strong> <%= @almirantado_ext_data[:sst][1].round()%> °C</p>
-											<% elsif @almirantado_ext_data[:sst][2] %>
-												<p><strong>SST:</strong> <%= @almirantado_ext_data[:sst][2].round()%> °C</p>
+											<% if @almirantado_ext_last[:sst][0] %>
+												<p><strong>SST:</strong> <%= @almirantado_ext_last[:sst][0].round()%> °C</p>
+											<% elsif @almirantado_ext_last[:sst][1] %>
+												<p><strong>SST:</strong> <%= @almirantado_ext_last[:sst][1].round()%> °C</p>
+											<% elsif @almirantado_ext_last[:sst][2] %>
+												<p><strong>SST:</strong> <%= @almirantado_ext_last[:sst][2].round()%> °C</p>
 											<% else %>
 												<p><strong>SST:</strong> -- °C</p>
 											<% end %>
-											<% if @almirantado_ext_data[:wspd][0] %>
-												<p><strong>VEL. VENTO:</strong> <%= @almirantado_ext_data[:wspd][0].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @almirantado_ext_data[:wdir][0].round()%> °</p>
-											<% elsif @almirantado_ext_data[:wspd][1] %>
-												<p><strong>VEL. VENTO:</strong> <%= @almirantado_ext_data[:wspd][1].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @almirantado_ext_data[:wdir][1].round()%> °</p>
-											<% elsif @almirantado_ext_data[:wspd][2] %>
-												<p><strong>VEL. VENTO:</strong> <%= @almirantado_ext_data[:wspd][2].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @almirantado_ext_data[:wdir][2].round()%> °</p>
+											<% if @almirantado_ext_last[:wspd][0] %>
+												<p><strong>VEL. VENTO:</strong> <%= @almirantado_ext_last[:wspd][0].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @almirantado_ext_last[:wdir][0].round()%> °</p>
+											<% elsif @almirantado_ext_last[:wspd][1] %>
+												<p><strong>VEL. VENTO:</strong> <%= @almirantado_ext_last[:wspd][1].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @almirantado_ext_last[:wdir][1].round()%> °</p>
+											<% elsif @almirantado_ext_last[:wspd][2] %>
+												<p><strong>VEL. VENTO:</strong> <%= @almirantado_ext_last[:wspd][2].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @almirantado_ext_last[:wdir][2].round()%> °</p>
 											<% else %>
 												<p><strong>VEL. VENTO:</strong> -- m/s</p>
 												<p><strong>DIR. VENTO:</strong> -- °</p>
 											<% end %>
 										</div>
 									</div>
-								<% end %>
+								
 							<% else %>
 								<h3 class='text-center'>PINGUIM</h3>
-								<% if @inpe_data == {}  || @inpe_data[:date_time] == []  %>
-									<p  class='text-center'><strong>BOIA A SER LANÇADA</strong></p>
-								<% else %>
-									<p class='text-center'><strong>ÚLTIMO DADO:</strong> <%= @inpe_data[:date_time][0].strftime('%Y/%m/%d %H:%M')%></p>
+								<p class='text-center'><strong>ÚLTIMO DADO:</strong> <%= @inpe_last[:date_time][0].strftime('%Y/%m/%d %H:%M')%></p>
 									<div class="row">
 										<div class="col-6 text-center"> 
-											<% if @inpe_data[:swvht][0] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @inpe_data[:swvht][0].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @inpe_data[:tp][0].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @inpe_data[:wvdir][0].round()%>°</p>
-											<% elsif @inpe_data[:swvht][1] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @inpe_data[:swvht][1].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @inpe_data[:tp][1].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @inpe_data[:wvdir][1].round()%>°</p>
-											<% elsif @inpe_data[:swvht][2] %>
-												<p><strong>ALT. ONDAS:</strong> <%= @inpe_data[:swvht][2].round(1)%> m</p>
-												<p><strong>PER. ONDAS:</strong> <%= @inpe_data[:tp][2].round(1)%> s</p>
-												<p><strong>DIR. ONDAS:</strong> <%= @inpe_data[:wvdir][2].round()%>°</p>
+											<% if @inpe_last[:swvht][0] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @inpe_last[:swvht][0].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @inpe_last[:tp][0].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @inpe_last[:wvdir][0].round()%>°</p>
+											<% elsif @inpe_last[:swvht][1] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @inpe_last[:swvht][1].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @inpe_last[:tp][1].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @inpe_last[:wvdir][1].round()%>°</p>
+											<% elsif @inpe_last[:swvht][2] %>
+												<p><strong>ALT. ONDAS:</strong> <%= @inpe_last[:swvht][2].round(1)%> m</p>
+												<p><strong>PER. ONDAS:</strong> <%= @inpe_last[:tp][2].round(1)%> s</p>
+												<p><strong>DIR. ONDAS:</strong> <%= @inpe_last[:wvdir][2].round()%>°</p>
 											<% else %>
 												<p><strong>ALT. ONDAS:</strong> -- m</p>
 												<p><strong>PER. ONDAS:</strong> -- s</p>
@@ -224,31 +215,30 @@
 											<% end %>
 										</div>
 										<div class="col-6 text-center"> 
-											<% if @inpe_data[:sst][0] %>
-												<p><strong>SST:</strong> <%= @inpe_data[:sst][0].round()%> °C</p>
-											<% elsif @inpe_data[:sst][1] %>
-												<p><strong>SST:</strong> <%= @inpe_data[:sst][1].round()%> °C</p>
-											<% elsif @inpe_data[:sst][2] %>
-												<p><strong>SST:</strong> <%= @inpe_data[:sst][2].round()%> °C</p>
+											<% if @inpe_last[:sst][0] %>
+												<p><strong>SST:</strong> <%= @inpe_last[:sst][0].round()%> °C</p>
+											<% elsif @inpe_last[:sst][1] %>
+												<p><strong>SST:</strong> <%= @inpe_last[:sst][1].round()%> °C</p>
+											<% elsif @inpe_last[:sst][2] %>
+												<p><strong>SST:</strong> <%= @inpe_last[:sst][2].round()%> °C</p>
 											<% else %>
 												<p><strong>SST:</strong> -- °C</p>
 											<% end %>
-											<% if @inpe_data[:wspd][0] %>
-												<p><strong>VEL. VENTO:</strong> <%= @inpe_data[:wspd][0].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @inpe_data[:wdir][0].round()%> °</p>
-											<% elsif @inpe_data[:wspd][1] %>
-												<p><strong>VEL. VENTO:</strong> <%= @inpe_data[:wspd][1].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @inpe_data[:wdir][1].round()%> °</p>
-											<% elsif @inpe_data[:wspd][2] %>
-												<p><strong>VEL. VENTO:</strong> <%= @inpe_data[:wspd][2].round()%> m/s</p>
-												<p><strong>DIR. VENTO:</strong> <%= @inpe_data[:wdir][2].round()%> °</p>
+											<% if @inpe_last[:wspd][0] %>
+												<p><strong>VEL. VENTO:</strong> <%= @inpe_last[:wspd][0].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @inpe_last[:wdir][0].round()%> °</p>
+											<% elsif @inpe_last[:wspd][1] %>
+												<p><strong>VEL. VENTO:</strong> <%= @inpe_last[:wspd][1].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @inpe_last[:wdir][1].round()%> °</p>
+											<% elsif @inpe_last[:wspd][2] %>
+												<p><strong>VEL. VENTO:</strong> <%= @inpe_last[:wspd][2].round()%> m/s</p>
+												<p><strong>DIR. VENTO:</strong> <%= @inpe_last[:wdir][2].round()%> °</p>
 											<% else %>
 												<p><strong>VEL. VENTO:</strong> -- m/s</p>
 												<p><strong>DIR. VENTO:</strong> -- °</p>
 											<% end %>
 										</div>
-									</div>
-								<% end %>
+									</div>								
 							<% end %>
 						</div>
 					</div>				
@@ -272,7 +262,8 @@
 				<%= date_field_tag :start_date,
 					params[:start_date],
 					class: "form-control input-sm p-0",
-					placeholder: "Data Inicial"
+					placeholder: "Data Inicial",
+					value: @start_date.strftime("%Y-%m-%d")
 				%>
 			</div>
 			<div>
@@ -280,13 +271,15 @@
 				<%= date_field_tag :end_date,
 					params[:end_date],
 					class: "form-control input-sm p-0",
-					placeholder: "Data Final"
+					placeholder: "Data Final",
+					value: @end_date.strftime("%Y-%m-%d")
 				%>
-			</div>
-			<div class='search w-100' style="writing-mode: vertical-rl">
+			</div>			
+			<div class='search w-100' style="writing-mode: vertical-rl">				
 				<%= submit_tag "FILTRAR", class: "orange-button-search p-2" %>
 			</div>
 		<% end %>
+		<div class='observation'>* Período de dados disponível: 04/dez/2021 a 18/mar/2022</div>			
 		<div id="plotdata"
 			data-almirantadoint="<%= @almirantado_int_data.to_json %>"
 			data-almirantadoext="<%= @almirantado_ext_data.to_json %>"
@@ -337,6 +330,12 @@
 		</div>
 	</div>
 </div>
+
+<% if @popup %>
+	<div class="full-screen flex-container-center" data-pop="<%= @popup %>" id='first-full-screen'>
+<% else %>
+	<div class="inactive-tab full-screen flex-container-center" data-pop="<%= @popup %>" id='first-full-screen'>
+<% end %>
 
 <div class="full-screen flex-container-center" id='first-full-screen'>
 	<p><i class="fas fa-times-circle"></i></p>

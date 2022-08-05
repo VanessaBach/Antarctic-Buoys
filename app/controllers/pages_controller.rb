@@ -21,26 +21,34 @@ class PagesController < ApplicationController
 
   def home
     if params[:commit]
+      @popup = false
       start_date = params[:start_date]
       end_date = params[:end_date]
       start_date = Date.parse start_date
       end_date = Date.parse end_date
     else
-      start_date = (Time.now - 1.day)
-      end_date = (Time.now + 1.day)
+      @popup = true
+      start_date = (Time.new(2022, 03, 19) - 5.day)
+      end_date = Time.new(2022, 03, 19)
     end
     if start_date == nil
-      start_date = (Time.now - 5.day)
+      start_date = (Time.new(2022, 03, 19) - 5.day)
     end
     if end_date == nil
-      end_date = Time.now + 1.day
+      end_date = Time.new(2022, 03, 19)
     end
-    if start_date < (Time.now - 5.day)
-      start_date = (Time.now - 5.day)
+    if  start_date < Time.new(2021, 12, 04) || start_date > Time.new(2022, 03, 19)
+      start_date = Time.new(2021, 12, 04)
     end
-    if end_date < start_date
-      end_date = Time.now + 1.day
+    if end_date < Time.new(2021, 12, 04) || end_date > Time.new(2022, 03, 18)
+      end_date = Time.new(2022, 03, 18) 
     end
+    if start_date >= end_date
+      start_date = end_date - 5.days
+    end
+
+    @start_date = start_date
+    @end_date = end_date
 
     @almirantado_int = System.where("name ='almirantado_int' ") [0]
     @almirantado_ext = System.where("name ='almirantado_ext' ") [0]
@@ -49,6 +57,9 @@ class PagesController < ApplicationController
     @almirantado_int_data = get_remobs(@almirantado_int, start_date, end_date)
     @almirantado_ext_data = get_remobs(@almirantado_ext, start_date, end_date)
     @inpe_data = get_remobs(@inpe, start_date, end_date)
+    @almirantado_int_last = get_remobs(@almirantado_int, Time.new(2022, 3, 8), Time.new(2022, 3, 9))
+    @almirantado_ext_last = get_remobs(@almirantado_ext, Time.new(2021, 12, 13), Time.new(2021, 12, 14))
+    @inpe_last = get_remobs(@inpe, Time.new(2022, 3, 18), Time.new(2022, 3, 19))
 
     @systems = [@almirantado_int, @almirantado_ext, @inpe]
   end
